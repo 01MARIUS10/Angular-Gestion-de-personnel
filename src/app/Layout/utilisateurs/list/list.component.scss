@@ -1,0 +1,19 @@
+.borderSurvol:hover{
+    border:solid 2px darkred;
+    transform:scale(1.15);
+}
+
+.inner-box,img{
+    width:60px;
+    height: 60px;
+}
+
+
+tbody:hover{
+    border: none;
+    outline: none;
+    background: rgb(229, 207, 207);
+    font-size: 1.01rem;
+    color: #666;
+    // padding: 10px 15px 10px 10px;
+}

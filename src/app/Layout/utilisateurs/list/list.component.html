@@ -1,0 +1,74 @@
+<app-header></app-header>
+<ng-template  #elseBlock>
+    <div class="alert alert-danger text-center pt-4">la liste est vide</div>
+</ng-template>
+<div class="event-schedule-area-two bg-color pad100 pt-4" *ngIf="Users.length!==0;else elseBlock">
+    <div class="container m-auto" >
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="home" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead >
+                                    <tr>
+                                        <th class="text-center" scope="col">Image</th>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">function</th>
+                                        <th class="text-center" scope="col"></th>
+                                        <th class="text-center" scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor ="let user of Users" >
+                                    <tr class="inner-box " (click)="goToProfil(user)" appErrorInput="#6c757d">
+                                        <td>
+                                            <div class="event-img h-25">
+                                                <img  [src]="user.picture" alt="" />
+                                            </div>
+                                        </td>
+                                        <th scope="row">
+                                            <div class="event-date">
+                                                <span>{{user.name}}</span>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div class="r-no">
+                                                <span>{{user.email}}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="event-wrap">
+                                                <div class="time">
+                                                    <span>{{user.createDate | date : 'MMM d, y, h:mm:ss a'}}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="r-no">
+                                                <span class="p-1 br {{user.function | userFunctionnality}}">{{user.function}}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="primary-btn">
+                                                <a class="btn btn-primary" (click)="goModifyProfil(user)">Modify</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="primary-btn">
+                                                <a class="btn btn-danger" (click)="delete(user)" >Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <!-- /col end-->
+        </div>
+        <!-- /row end-->
+    </div>
+</div>

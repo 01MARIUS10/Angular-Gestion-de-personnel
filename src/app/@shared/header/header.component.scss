@@ -1,0 +1,25 @@
+.session{
+    background: #b02a37;
+    border-radius: 10px;
+    flex:50%;
+    top:50px;
+    z-index:1;
+}
+.cardSession{
+    position:relative;
+    margin-right: 10px;
+}
+.cardSession:after{
+    content:"";
+    position:absolute;
+    width: 18px;
+    height: 18px;
+    right: 0;
+    top:-10px;
+    background: #b02a37;
+    transform:rotate(45deg);
+    z-index: 0;
+}
+.cardSession>*{
+    flex:50%;
+}

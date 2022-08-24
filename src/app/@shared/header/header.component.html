@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light bg-secondary justify-content-between px-3 ">
+    <div class="d-flex ">
+      <a class="navbar-brand mx-3  mx-5">Listes des Users</a>
+    </div>
+    <div class=" position-relative d-flex align-items-center">
+      <span class="mx-5  day-date-hour">{{horloge | date : 'MMM d, y, h:mm:ss a'}}</span>
+      <button (click)="showInput()" class="btn btn-secondary dropdown-toggle "   >
+        <span>session:  {{stringRebour}}</span>
+      </button>
+      <div class="session position-absolute d-flex align-items-center " *ngIf="hide">
+        <div class="cardSession d-flex ml-4 p-2 ">
+           <input #session class="" type="number">
+           <button class="btn btn-primary" (click)="AddSession(session.value)">AddSession</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-dark" (click)="deconnection()">Deconnection</button>
+    </div>
+  </nav>
