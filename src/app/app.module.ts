@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 
+import { HttpClientModule } from "@angular/common/http"
+
 import { UserServiceService } from './Layout/utilisateurs/user-service.service';
 import { UtilisateursModule } from './Layout/utilisateurs/utilisateurs.module';
 
@@ -21,10 +23,12 @@ import { PageNotFoundComponent } from './Layout/page-not-found/page-not-found.co
     PageNotFoundComponent
   ],
   imports: [
-    UtilisateursModule,
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+
+    UtilisateursModule,
+    AppRoutingModule
   ],
   providers: [UserServiceService],
   bootstrap: [AppComponent]

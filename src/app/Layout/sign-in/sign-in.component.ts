@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../utilisateurs/user-service.service';
 import { Router } from '@angular/router';
-import { USERS } from '../../@data/data';
 import {User} from '../../@model/user';
 import { NgForm } from '@angular/forms';
 
@@ -61,16 +60,15 @@ export class SigninComponent implements OnInit {
     let pwdConf = verify.trim();
 
     if(this.inputValidation){
-      this.utilisateur ={
-        "id": 0,
-        "name": nom,
-        "email": mail,
-        "picture": "urlPhoto",
-        "password": pwd,
-        "function": fonctionalite,
-        "createDate": new Date()
-      }
-      USERS.push(this.utilisateur); 
+      // this.utilisateur ={
+      //   "id": 0,
+      //   "name": nom,
+      //   "email": mail,
+      //   "picture": "urlPhoto",
+      //   "password": pwd,
+      //   "function": fonctionalite,
+      //   "createdAt": '2022-08-26T11:43:10.000Z'
+      // }
       this.goToList();
     }
   }

@@ -19,10 +19,14 @@ export class UserprofilComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.Users = this.userService.getAllUser()
+    this.userService.getAllUser().subscribe(users => this.Users = users as User[]);
     this.userId = this.currentRoute.snapshot.paramMap.get("id") as string
     if(this.userId)
-      this.User= this.userService.getUserById(+this.userId) as User;
+      // this.User= this.userService.getUserById(+this.userId) as User;
+      this.userService.getUserById(+this.userId).subscribe(user => {
+                                                                    this.User = user as User; 
+                                                                    console.log(user)
+                                                                  });
     else
       this.User=this.Users[0]
   }

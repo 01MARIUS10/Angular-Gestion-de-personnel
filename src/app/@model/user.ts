@@ -5,5 +5,6 @@ export class User{
     picture:string="";
     password:string="";
     function:string="";
-    createDate:Date=new Date();
+    created!:Date;
+    updatedAt!:Date
 }

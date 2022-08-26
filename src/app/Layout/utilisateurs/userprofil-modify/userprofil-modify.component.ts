@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute , Router } from '@angular/router';
 import { User } from 'src/app/@model/user';
+import { responseTab , responseVal } from 'src/app/@model/response'; 
 import { UserServiceService } from '../user-service.service';
 
 @Component({
@@ -10,17 +11,17 @@ import { UserServiceService } from '../user-service.service';
 })
 export class UserprofilModifyComponent implements OnInit {
   users:User[];
-  user:User;
+  user:User|undefined;
   constructor(
     private currentRoute : ActivatedRoute ,
     private router : Router,
     private userService : UserServiceService) { }
 
   ngOnInit(): void {
-    this.users = this.userService.getAllUser();
+    this.userService.getAllUser().subscribe(users => this.users = users as User[]);
     const userId : string|null =this.currentRoute.snapshot.paramMap.get("id");
     if(userId)
-      this.user = this.userService.getUserById(+userId) as User;
+      this.userService.getUserById(+userId)?.subscribe(user => this.user = user ) ;
     else  
       this.user = this.users[0];
   }
@@ -30,6 +31,4 @@ export class UserprofilModifyComponent implements OnInit {
   addModification(){
     this.router.navigate(['/list'])
   }
-
-
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { responseTab , responseVal } from 'src/app/@model/response';
 import {User} from '../../../@model/user';
 import { UserServiceService } from '../user-service.service';
 
@@ -16,7 +17,10 @@ export class ListComponent implements OnInit {
     private userService : UserServiceService) { }
 
   ngOnInit(): void {
-    this.Users = this.userService.getAllUser();
+    this.userService.getAllUser().subscribe(users => {
+      this.Users = users as User[];
+      console.log(this.Users)
+    });
   }
 
   delete(user:User){
@@ -29,6 +33,4 @@ export class ListComponent implements OnInit {
   goModifyProfil(user : User){
     this.router.navigate(['/list/',user.id,'modify'])
   }
-  
-
 }
